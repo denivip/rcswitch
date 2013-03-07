@@ -40,7 +40,7 @@
 		animationDuration = 0.175;
 	}
 	self.contentMode = UIViewContentModeRedraw;
-	[self setKnobWidth:30];
+	[self setKnobWidth:27];
 	[self regenerateImages];
 	sliderOff = [[[UIImage imageNamed:@"btn_slider_off.png"] stretchableImageWithLeftCapWidth:12.0
 																				 topCapHeight:0.0] retain];
@@ -82,12 +82,11 @@
 - (void)setKnobWidth:(float)aFloat
 {
 	knobWidth = roundf(aFloat); // whole pixels only
-	endcapWidth = roundf(knobWidth / 2.0);
+	endcapWidth = 0;//roundf(knobWidth / 2.0);
 	
 	{
 		UIImage *knobTmpImage = [[[UIImage imageNamed:@"btn_slider_thumb.png"] retain] autorelease];
-		UIImage *knobImageStretch = [knobTmpImage stretchableImageWithLeftCapWidth:12.0
-																	  topCapHeight:0.0];
+		UIImage *knobImageStretch = knobTmpImage;
 		CGRect knobRect = CGRectMake(0, 0, knobWidth, [knobImageStretch size].height);
 
 		if(UIGraphicsBeginImageContextWithOptions != NULL)
@@ -103,8 +102,7 @@
 	
 	{
 		UIImage *knobTmpImage = [[[UIImage imageNamed:@"btn_slider_thumb_pressed.png"] retain] autorelease];
-		UIImage *knobImageStretch = [knobTmpImage stretchableImageWithLeftCapWidth:12.0
-																	  topCapHeight:0.0];
+		UIImage *knobImageStretch = knobTmpImage;
 		CGRect knobRect = CGRectMake(0, 0, knobWidth, [knobImageStretch size].height);
 		if(UIGraphicsBeginImageContextWithOptions != NULL)
 			UIGraphicsBeginImageContextWithOptions(knobRect.size, NO, scale);
@@ -247,7 +245,7 @@
 		}
 		
 		if(drawPercent > 0.0){		
-			float onWidth = knobWidth / 2 + ((width - knobWidth / 2) - knobWidth / 2) * drawPercent;
+			float onWidth = knobWidth / 4 + ((width - knobWidth / 4) - knobWidth / 4) * drawPercent;
 			CGRect sourceRect = CGRectMake(0, 0, onWidth * scale, [sliderOn size].height * scale);
 			CGRect drawOnRect = CGRectMake(0, 0, onWidth, [sliderOn size].height);
 			CGImageRef sliderOnSubImage = CGImageCreateWithImageInRect([sliderOn CGImage], sourceRect);
