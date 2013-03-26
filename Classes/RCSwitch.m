@@ -275,7 +275,7 @@
 			CGContextTranslateCTM(context, 0.0, -boundsRect.size.height);	
 			CGPoint location = boundsRect.origin;
 			UIImage *imageToDraw = knobImage;
-			if(self.highlighted)
+			if(drawPercent > 0.5f)
 				imageToDraw = knobImagePressed;
 			
 			CGRect drawOnRect = CGRectMake(location.x - 1 + roundf(drawPercent * (boundsRect.size.width - knobWidth + 2)),
