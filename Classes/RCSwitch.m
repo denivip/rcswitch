@@ -277,7 +277,7 @@
 			if(drawPercent > 0.5f)
 				imageToDraw = knobImagePressed;
 			
-			CGRect drawOnRect = CGRectMake(location.x - 1 + roundf(drawPercent * (boundsRect.size.width - knobWidth + 2)),
+			CGRect drawOnRect = CGRectMake(location.x + roundf(drawPercent * (boundsRect.size.width - knobWidth)),
 										   location.y + 1, knobWidth, [knobImage size].height);
 			CGContextDrawImage(context, drawOnRect, [imageToDraw CGImage]);
 		}
