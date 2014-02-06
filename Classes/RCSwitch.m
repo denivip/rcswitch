@@ -32,7 +32,7 @@
 
 - (void)initCommon
 {
-    drawHeight = 28;
+    drawHeight = 32;
 	/* It seems that the animation length was changed in iOS 4.0 to animate the switch slower. */
 	if(kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_4_0){
 		animationDuration = 0.25;
@@ -40,7 +40,7 @@
 		animationDuration = 0.175;
 	}
 	self.contentMode = UIViewContentModeRedraw;
-	[self setKnobWidth:27];
+	[self setKnobWidth:29];
 	[self regenerateImages];
 	sliderOff = [[[UIImage imageNamed:@"btn_slider_off.png"] stretchableImageWithLeftCapWidth:12.0
 																				 topCapHeight:0.0] retain];
@@ -273,11 +273,12 @@
 			CGContextScaleCTM(context, 1.0, -1.0);
 			CGContextTranslateCTM(context, 0.0, -boundsRect.size.height);	
 			CGPoint location = boundsRect.origin;
+            location.x += self.knobInset;
 			UIImage *imageToDraw = knobImage;
 			if(drawPercent > 0.5f)
 				imageToDraw = knobImagePressed;
 			
-			CGRect drawOnRect = CGRectMake(location.x + roundf(drawPercent * (boundsRect.size.width - knobWidth)),
+			CGRect drawOnRect = CGRectMake(location.x + roundf(drawPercent * (boundsRect.size.width - knobWidth - 2*self.knobInset)),
 										   location.y + 1, knobWidth, [knobImage size].height);
 			CGContextDrawImage(context, drawOnRect, [imageToDraw CGImage]);
 		}

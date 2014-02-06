@@ -57,6 +57,9 @@
 - (void)drawUnderlayersInRect:(CGRect)aRect withOffset:(float)offset inTrackWidth:(float)trackWidth;
 @property(readwrite,assign) float knobWidth;
 
+/* Left-right insets for knob positioning. Top-bottom values are ignored. */
+@property(nonatomic) CGFloat knobInset;
+
 - (void)setOn:(BOOL)aBool animated:(BOOL)animated;
 @property(readwrite,assign,getter=isOn) BOOL on;
 
