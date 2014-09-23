@@ -89,10 +89,7 @@
 		UIImage *knobImageStretch = knobTmpImage;
 		CGRect knobRect = CGRectMake(0, 0, knobWidth, [knobImageStretch size].height);
 
-		if(UIGraphicsBeginImageContextWithOptions != NULL)
-			UIGraphicsBeginImageContextWithOptions(knobRect.size, NO, scale);
-		else
-			UIGraphicsBeginImageContext(knobRect.size);
+        UIGraphicsBeginImageContextWithOptions(knobRect.size, NO, scale);
 
 		[knobImageStretch drawInRect:knobRect];
 		[knobImage release];
@@ -104,10 +101,7 @@
 		UIImage *knobTmpImage = [[[UIImage imageNamed:@"btn_slider_thumb_pressed.png"] retain] autorelease];
 		UIImage *knobImageStretch = knobTmpImage;
 		CGRect knobRect = CGRectMake(0, 0, knobWidth, [knobImageStretch size].height);
-		if(UIGraphicsBeginImageContextWithOptions != NULL)
-			UIGraphicsBeginImageContextWithOptions(knobRect.size, NO, scale);
-		else
-			UIGraphicsBeginImageContext(knobRect.size);
+        UIGraphicsBeginImageContextWithOptions(knobRect.size, NO, scale);
 		[knobImageStretch drawInRect:knobRect];
 		[knobImagePressed release];
 		knobImagePressed = [UIGraphicsGetImageFromCurrentImageContext() retain];
@@ -127,10 +121,7 @@
 																						   topCapHeight:0.0];
 	CGRect sliderOnRect = boundsRect;
 	sliderOnRect.size.height = [sliderOnBase size].height;
-	if(UIGraphicsBeginImageContextWithOptions != NULL)
-		UIGraphicsBeginImageContextWithOptions(sliderOnRect.size, NO, scale);
-	else
-		UIGraphicsBeginImageContext(sliderOnRect.size);
+    UIGraphicsBeginImageContextWithOptions(sliderOnRect.size, NO, scale);
 	[sliderOnBase drawInRect:sliderOnRect];
 	[sliderOn release];
 	sliderOn = [UIGraphicsGetImageFromCurrentImageContext() retain];
@@ -157,11 +148,7 @@
 																		  topCapHeight:0.0];
 		CGRect sliderOnRect = boundsRect;
 		/* works around < 4.0 bug with not scaling height (see http://stackoverflow.com/questions/785986/resizing-an-image-with-stretchableimagewithleftcapwidth) */
-		if(UIGraphicsBeginImageContextWithOptions != NULL)
-			UIGraphicsBeginImageContextWithOptions(sliderOnRect.size, NO, scale);
-		else {
-			UIGraphicsBeginImageContext(sliderOnRect.size);
-		}
+        UIGraphicsBeginImageContextWithOptions(sliderOnRect.size, NO, scale);
 		[buttonEndTrackBase drawInRect:sliderOnRect];
 		[buttonEndTrack release];
 		buttonEndTrack = [UIGraphicsGetImageFromCurrentImageContext() retain];
@@ -173,10 +160,7 @@
 		UIImage *buttonEndTrackBase = [buttonTmpImage stretchableImageWithLeftCapWidth:12.0
 																		  topCapHeight:0.0];
 		CGRect sliderOnRect = boundsRect;
-		if(UIGraphicsBeginImageContextWithOptions != NULL)
-			UIGraphicsBeginImageContextWithOptions(sliderOnRect.size, NO, scale);
-		else
-			UIGraphicsBeginImageContext(sliderOnRect.size);		
+        UIGraphicsBeginImageContextWithOptions(sliderOnRect.size, NO, scale);
 		[buttonEndTrackBase drawInRect:sliderOnRect];
 		[buttonEndTrackPressed release];
 		buttonEndTrackPressed = [UIGraphicsGetImageFromCurrentImageContext() retain];
